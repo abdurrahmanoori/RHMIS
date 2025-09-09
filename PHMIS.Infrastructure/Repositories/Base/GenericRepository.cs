@@ -208,7 +208,7 @@ namespace PHMIS.Infrastructure.Repositories.Base
         }
 
         /// <inheritdoc/>
-        public async Task<T?> GetByIdAsync(long Id)
+        public async Task<T?> GetByIdAsync(int Id)
         {
             return await this.dbSet.FindAsync(Id);
         }

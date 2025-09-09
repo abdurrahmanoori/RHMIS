@@ -33,8 +33,8 @@ namespace PHMIS.Controllers
         //public async Task<ActionResult<bool>> Update(int id, CustomerDto dto) =>
         //    HandleResultResponse(await _customerService.UpdateCustomer(id, dto));
 
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<bool>> Delete(int id) =>
-        //    HandleResultResponse(await _customerService.DeleteCustomer(id));
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Unit>> Delete(int id) =>
+            HandleResultResponse(await _mediator.Send(new DeletePatientCommand(id)));
     }
 }

@@ -23,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7016");
+    client.BaseAddress = new Uri("https://localhost:7216");
 });
 
 builder.Services.AddReactAppCors();

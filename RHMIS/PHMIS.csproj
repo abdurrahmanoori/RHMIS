@@ -32,4 +32,8 @@
 	  <ProjectReference Include="..\PHMIS.Infrastructure\PHMIS.Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="JsonConverters\" />
+	</ItemGroup>
+
 </Project>

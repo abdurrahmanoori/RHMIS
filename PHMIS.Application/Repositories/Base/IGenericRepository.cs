@@ -35,7 +35,7 @@ namespace PHMIS.Application.Repositories.Base
             Expression<Func<T, object>>[]? includeProperties = null,
             params Expression<Func<T, object>>[] orderByProperties);
 
-        Task<T?> GetByIdAsync(long Id);
+        Task<T?> GetByIdAsync(int Id);
 
         public Task<List<T>> GetWhenAsync(Expression<Func<T, bool>> condition);
         public Task<List<T>> GetWhenContainsAsync<TProperty>(Expression<Func<T, TProperty>> property, List<TProperty> ids);
