@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RHMIS.Extentions
+namespace PHMIS.Extentions
 {
 
     public static class ApiBehaviorOptionsExtensions

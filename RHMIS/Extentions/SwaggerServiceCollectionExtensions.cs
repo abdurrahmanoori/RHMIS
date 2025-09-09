@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace RHMIS.Extentions
+namespace PHMIS.Extentions
 {
     public static class SwaggerServiceCollectionExtensions
     {

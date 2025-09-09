@@ -1,7 +1,8 @@
 using FluentValidation.AspNetCore;
-using RHMIS.Extentions;
-using RHMIS.Infrastructure.Extentions;
-using RHMIS.Application.Extentions;
+using PHMIS.Extentions;
+using PHMIS.Infrastructure.Extentions;
+using PHMIS.Application.Extentions;
+using PHMIS.Identity.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,9 +29,10 @@ builder.Services.AddHttpClient("ApiClient", client =>
 builder.Services.AddReactAppCors();
 
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigureIdentityServices();
 //builder.Services.ConfigurePresentionService();
 
 // MiniProfiler registration

@@ -1,4 +1,4 @@
-﻿namespace RHMIS.Extentions
+﻿namespace PHMIS.Extentions
 {
     public static class CorsServiceExtensions
     {
