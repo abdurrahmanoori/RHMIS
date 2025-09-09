@@ -26,7 +26,7 @@ namespace PHMIS.Application.Features.Provinces.Queries
             var query = _provinceRepository.GetAllQueryable();
             var dtoQuery = query.ProjectTo<ProvinceDto>(_mapper.ConfigurationProvider);
             var paged = await dtoQuery.ToPagedList(request.PageNumber, request.PageSize);
-            if (paged.Items.Count == 0)
+            if (paged.Items.Any() == false)
             {
                 return Result<PagedList<ProvinceDto>>.EmptyResult(nameof(ProvinceDto));
             }
