@@ -29,9 +29,9 @@ namespace PHMIS.Controllers
         //public async Task<ActionResult<CustomerResponseDto>> GetById(int id) =>
         //    HandleResultResponse(await _customerService.GetCustomerById(id));
 
-        //[HttpPut("{id}")]
-        //public async Task<ActionResult<bool>> Update(int id, CustomerDto dto) =>
-        //    HandleResultResponse(await _customerService.UpdateCustomer(id, dto));
+        [HttpPut("{id}")]
+        public async Task<ActionResult<PatientDto>> Update(int id, PatientCreateDto dto) =>
+            HandleResultResponse(await _mediator.Send(new UpdatePatientCommand(id, dto)));
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(int id) =>
