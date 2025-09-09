@@ -14,15 +14,12 @@ namespace PHMIS.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
 
-
-
             #region Seed Database
             PatientSeed.DataSeed(modelBuilder);
             #endregion
         }
 
-
-        public DbSet<Patient> Patients { get; set; } 
-
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Province> Provinces { get; set; }
     }
 }
