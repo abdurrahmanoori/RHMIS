@@ -6,8 +6,25 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" />
+		<PackageReference Include="FluentValidation.AspNetCore" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" />
+		<PackageReference Include="Seq.Extensions.Logging" />
+		<PackageReference Include="Serilog" />
+		<PackageReference Include="Serilog.Extensions.Hosting" />
+		<PackageReference Include="Serilog.Sinks.Console" />
+		<PackageReference Include="Serilog.Sinks.Seq" />
+		<PackageReference Include="Swashbuckle.AspNetCore" />
+		<!-- MiniProfiler packages -->
+		<PackageReference Include="MiniProfiler.AspNetCore" />
+		<PackageReference Include="MiniProfiler.EntityFrameworkCore" />
+		<PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
+	</ItemGroup>
 
 </Project>
