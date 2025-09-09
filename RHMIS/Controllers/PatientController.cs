@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PHMIS.Application.Common;
 using PHMIS.Application.DTO.Patients;
 using PHMIS.Application.Features.Patients.Commands;
+using PHMIS.Application.Features.Patients.Queries;
 using PHMIS.Controllers.Base;
 
 namespace PHMIS.Controllers
@@ -21,13 +23,13 @@ namespace PHMIS.Controllers
         public async Task<ActionResult<PatientCreateDto>> Create(PatientCreateDto dto) =>
          HandleResultResponse(await _mediator.Send(new CreatePatientCommand(dto)));
 
-        //[HttpGet]
-        //public async Task<ActionResult<List<CustomerResponseDto>>> GetAll() =>
-        //    HandleResultResponse(await _customerService.GetCustomerList());
+        [HttpGet]
+        public async Task<ActionResult<PagedList<PatientDto>>> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 25) =>
+            HandleResultResponse(await _mediator.Send(new GetPatientListQuery(pageNumber, pageSize)));
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<CustomerResponseDto>> GetById(int id) =>
-        //    HandleResultResponse(await _customerService.GetCustomerById(id));
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PatientDto>> GetById(int id) =>
+            HandleResultResponse(await _mediator.Send(new GetPatientByIdQuery(id)));
 
         [HttpPut("{id}")]
         public async Task<ActionResult<PatientDto>> Update(int id, PatientCreateDto dto) =>
