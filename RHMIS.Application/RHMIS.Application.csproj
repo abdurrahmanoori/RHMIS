@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="DTO\Patients\" />
     <Folder Include="MappingProfile\" />
+    <Folder Include="Features\" />
   </ItemGroup>
 
   <ItemGroup>

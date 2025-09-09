@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -26,6 +26,16 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
 		<PackageReference Include="Microsoft.Extensions.Options" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Core" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\RHMIS.Application\RHMIS.Application.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="EntityConfigurations\" />
 	</ItemGroup>
 
 </Project>
