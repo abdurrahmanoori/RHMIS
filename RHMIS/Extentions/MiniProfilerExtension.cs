@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Storage;
 
-namespace PHMIS.Extentions;
+namespace PHMIS.Extensions;
 
 public static class MiniProfilerExtension
 {

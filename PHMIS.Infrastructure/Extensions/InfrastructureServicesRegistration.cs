@@ -7,7 +7,7 @@ using PHMIS.Infrastructure.Configurations;
 using PHMIS.Infrastructure.Context;
 using PHMIS.Infrastructure.Interceptors;
 
-namespace PHMIS.Infrastructure.Extentions
+namespace PHMIS.Infrastructure.Extensions
 {
     public static class InfrastructureServicesRegistration
     {

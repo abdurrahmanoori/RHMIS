@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using PHMIS.Infrastructure.Interceptors;
 
-namespace PHMIS.Infrastructure.Extentions
+namespace PHMIS.Infrastructure.Extensions
 {
     public static class DbContextExtensions
     {

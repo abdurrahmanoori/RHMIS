@@ -1,12 +1,12 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace PHMIS.Extentions
+namespace PHMIS.Extensions
 {
     public static class SwaggerServiceCollectionExtensions
     {
         /*
          PSEUDOCODE PLAN
-         - Create static extension class SwaggerServiceCollectionExtensions in same namespace used in Program (Khayati.Api.Extentions).
+         - Create static extension class SwaggerServiceCollectionExtensions in same namespace used in Program (Khayati.Api.Extensions).
          - Implement extension method AddSwaggerWithJwt(IServiceCollection services).
            - Inside call services.AddSwaggerGen with same configuration currently inline in Program.cs:
              - Define Swagger doc "v1" with title "Khayati API".

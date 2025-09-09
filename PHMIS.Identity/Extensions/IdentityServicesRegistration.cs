@@ -2,7 +2,7 @@
 using PHMIS.Identity.IServices;
 using PHMIS.Identity.Services;
 
-namespace PHMIS.Identity.Extentions
+namespace PHMIS.Identity.Extensions
 {
     public static class IdentityServicesRegistration
     {

@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using Serilog.Events;
 
-namespace PHMIS.Extentions
+namespace PHMIS.Extensions
 {
 
     public static class SerilogExtension

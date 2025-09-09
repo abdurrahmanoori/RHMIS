@@ -7,7 +7,7 @@ using PHMIS.Application.Features.Patients.Commands;
 using Sigtas.Application.Features.TaxRole.MaintainEnterprise.CommandValidators;
 using System.Reflection;
 
-namespace PHMIS.Application.Extentions;
+namespace PHMIS.Application.Extensions;
 
 public static class ApplicationServiceRegistration
 {
