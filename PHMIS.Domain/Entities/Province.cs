@@ -1,8 +1,8 @@
+using PHMIS.Domain.Common;
+
 namespace PHMIS.Domain.Entities
 {
-    public class Province
+    public class Province : BaseEntity
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
     }
 }

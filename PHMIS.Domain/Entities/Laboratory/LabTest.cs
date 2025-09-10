@@ -1,9 +1,9 @@
-﻿namespace PHMIS.Domain.Entities.Laboratory
+﻿using PHMIS.Domain.Common;
+
+namespace PHMIS.Domain.Entities.Laboratory
 {
-    public class LabTest
+    public class LabTest : BaseEntity
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
         public int? Price { get; set; }
         public bool IsActive { get; set; } = true;
