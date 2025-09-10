@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PHMIS.Infrastructure.Context;
 
@@ -10,9 +11,11 @@ using PHMIS.Infrastructure.Context;
 namespace PHMIS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250910182454_LabStatusStringEnum")]
+    partial class LabStatusStringEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -57,7 +60,7 @@ namespace PHMIS.Infrastructure.Migrations
 
                     b.HasIndex("LabTestGroupId1");
 
-                    b.ToTable("LabTests", (string)null);
+                    b.ToTable("LabTests");
 
                     b.HasData(
                         new
@@ -126,7 +129,7 @@ namespace PHMIS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LabTestGroups", (string)null);
+                    b.ToTable("LabTestGroups");
 
                     b.HasData(
                         new
@@ -187,7 +190,7 @@ namespace PHMIS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Patients", (string)null);
+                    b.ToTable("Patients");
 
                     b.HasData(
                         new
@@ -237,7 +240,7 @@ namespace PHMIS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provinces", (string)null);
+                    b.ToTable("Provinces");
                 });
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Laboratory.LabTest", b =>
