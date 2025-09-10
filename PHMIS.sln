@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHMIS.Infrastructure", "PHM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHMIS.Identity", "PHMIS.Identity\PHMIS.Identity.csproj", "{F36AF43C-6B5B-03EC-5B54-DC1D80D65BA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHMIS.Test", "PHMIS.Test\PHMIS.Test.csproj", "{4E0F3CD3-6ACA-4836-907F-D50862411270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F36AF43C-6B5B-03EC-5B54-DC1D80D65BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36AF43C-6B5B-03EC-5B54-DC1D80D65BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36AF43C-6B5B-03EC-5B54-DC1D80D65BA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E0F3CD3-6ACA-4836-907F-D50862411270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0F3CD3-6ACA-4836-907F-D50862411270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0F3CD3-6ACA-4836-907F-D50862411270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0F3CD3-6ACA-4836-907F-D50862411270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

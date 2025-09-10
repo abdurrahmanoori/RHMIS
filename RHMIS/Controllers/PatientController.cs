@@ -12,31 +12,25 @@ namespace PHMIS.Controllers
     [ApiController]
     public class PatientController : BaseApiController
     {
-        //private readonly IUnitOfWork _unitOfWork;
-        private readonly IMediator _mediator;
-        public PatientController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         [HttpPost]
         public async Task<ActionResult<PatientCreateDto>> Create(PatientCreateDto dto) =>
-         HandleResultResponse(await _mediator.Send(new CreatePatientCommand(dto)));
+         HandleResultResponse(await Mediator.Send(new CreatePatientCommand(dto)));
 
         [HttpGet]
         public async Task<ActionResult<PagedList<PatientDto>>> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 25) =>
-            HandleResultResponse(await _mediator.Send(new GetPatientListQuery(pageNumber, pageSize)));
+            HandleResultResponse(await Mediator.Send(new GetPatientListQuery(pageNumber, pageSize)));
 
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientDto>> GetById(int id) =>
-            HandleResultResponse(await _mediator.Send(new GetPatientByIdQuery(id)));
+            HandleResultResponse(await Mediator.Send(new GetPatientByIdQuery(id)));
 
         [HttpPut("{id}")]
         public async Task<ActionResult<PatientDto>> Update(int id, PatientCreateDto dto) =>
-            HandleResultResponse(await _mediator.Send(new UpdatePatientCommand(id, dto)));
+            HandleResultResponse(await Mediator.Send(new UpdatePatientCommand(id, dto)));
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(int id) =>
-            HandleResultResponse(await _mediator.Send(new DeletePatientCommand(id)));
+            HandleResultResponse(await Mediator.Send(new DeletePatientCommand(id)));
     }
 }
