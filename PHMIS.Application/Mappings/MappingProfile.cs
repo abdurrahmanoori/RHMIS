@@ -19,5 +19,8 @@ public class MappingProfile : Profile
 
         CreateMap<LabTestGroup, LabTestGroupDto>().ReverseMap();
         CreateMap<LabTestGroup, LabTestGroupCreateDto>().ReverseMap();
+
+        CreateMap<LabTest, LabTestDto>().ReverseMap();
+        CreateMap<LabTest, LabTestCreateDto>().ReverseMap();
     }
 }
