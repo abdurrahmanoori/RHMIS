@@ -1,43 +1,35 @@
-﻿using PHMIS.Domain.Entities.Patients;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PHMIS.Domain.Entities.Laboratory;
+using PHMIS.Domain.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PHMIS.Domain.Entities
+namespace PHMIS.Domain.Entities.Patients;
+
+public class PatientLabTest 
 {
-   
-    namespace PHMIS.Domain.Entities.Laboratory
-    {
-        public class PatientLabTest
-        {
-            public int Id { get; set; }
+    public int Id { get; set; } 
 
-            // Relationships
-            public int PatientId { get; set; }
-            public Patient Patient { get; set; } = null!;
+    public int PatientId { get; set; } 
 
-            public int LabTestId { get; set; }
-            public LabTest LabTest { get; set; } = null!;
+    public int LabTestId { get; set; } 
 
-            // Lifecycle
-            public DateTime OrderedAt { get; set; } = DateTime.UtcNow;
-            public DateTime? CollectedAt { get; set; }
-            public DateTime? ReportedAt { get; set; }
+    // Result data
+    public string? ResultValue { get; set; } // The value of the lab test result
+    public string? ResultNotes { get; set; } // Additional notes or observations about the result
+    public bool? IsAbnormal { get; set; } // Indicates if the result is abnormal
 
-            // Result data
-            public string? ResultValue { get; set; }
-            public string? ResultNotes { get; set; }
-            public bool? IsAbnormal { get; set; }
+    // Lifecycle
+    public DateTime OrderedAt { get; set; } = DateTime.UtcNow; // Timestamp when the lab test was ordered
+    public DateTime? CollectedAt { get; set; } // Timestamp when the sample was collected
+    public DateTime? ReportedAt { get; set; } // Timestamp when the lab test report was generated
 
-            // Snapshot of LabTest properties at the time of order/result
-            public string? UnitOrMeasurment { get; set; }
-            public string? NormalRange { get; set; }
-            public string? Abbreviation { get; set; }
+    [Column(TypeName = "nvarchar(24)")]
+    public LabStatus LabStatus { get; set; } = LabStatus.PendingToLab; // Current status of the lab test
 
-            // Status: e.g. Ordered, Collected, Completed, Canceled
-            public string? Status { get; set; }
-        }
-    }
+    [ForeignKey(nameof(LabTestId))]
+    public LabTest LabTest { get; set; } = null!; 
+
+    [ForeignKey(nameof(PatientId))]
+    public Patient Patient { get; set; } = null!; 
+
 }
+

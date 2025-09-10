@@ -1,4 +1,5 @@
 ﻿using PHMIS.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PHMIS.Domain.Entities.Laboratory
 {
@@ -8,11 +9,14 @@ namespace PHMIS.Domain.Entities.Laboratory
         public int? Price { get; set; }
         public bool IsActive { get; set; } = true;
         public int LabTestGroupId { get; set; }
-        public LabTestGroup LabTestGroup { get; set; }
 
         // New fields
         public string? UnitOfMeasurment { get; set; }
         public string? NormalRange { get; set; }
         public string? Abbreviation { get; set; }
+
+        [ForeignKey(nameof(LabTestGroupId))]
+        public LabTestGroup LabTestGroup { get; set; }
+
     }
 }
