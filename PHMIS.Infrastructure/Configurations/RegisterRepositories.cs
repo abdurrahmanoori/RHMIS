@@ -2,9 +2,11 @@
 using PHMIS.Application.Repositories.Base;
 using PHMIS.Application.Repositories.Patients;
 using PHMIS.Application.Repositories.Provinces;
+using PHMIS.Application.Repositories.Laboratory;
 using PHMIS.Infrastructure.Repositories.Base;
 using PHMIS.Infrastructure.Repositories.Patients;
 using PHMIS.Infrastructure.Repositories.Provinces;
+using PHMIS.Infrastructure.Repositories.Laboratory;
 using PHMIS.Infrastructure.RepositoryStores;
 
 namespace PHMIS.Infrastructure.Configurations
@@ -15,6 +17,7 @@ namespace PHMIS.Infrastructure.Configurations
         {
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<IProvinceRepository, ProvinceRepository>();
+            services.AddScoped<ILabTestGroupRepository, LabTestGroupRepository>();
 
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

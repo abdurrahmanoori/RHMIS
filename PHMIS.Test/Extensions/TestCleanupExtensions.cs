@@ -15,5 +15,13 @@ namespace PHMIS.Test.Extensions
             dbContext.Patients.RemoveRange(dbContext.Patients);
             await dbContext.SaveChangesAsync();
         }
+
+        public static async Task CleanupLabTestGroupsAsync(this CustomWebApplicationFactory factory)
+        {
+            using var scope = factory.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.LabTestGroups.RemoveRange(dbContext.LabTestGroups);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }
