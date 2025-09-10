@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PHMIS.Domain.Entities;
 using PHMIS.Domain.Entities.Laboratory;
+using PHMIS.Domain.Entities.Patients;
 using PHMIS.Infrastructure.DatabaseSeeders;
 
 namespace PHMIS.Infrastructure.Context

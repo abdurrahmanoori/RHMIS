@@ -15,7 +15,10 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                     Description = "Fasting blood glucose",
                     Price = 10,
                     IsActive = true,
-                    LabTestGroupId = 1 // Chemistry
+                    LabTestGroupId = 1, // Chemistry
+                    UnitOfMeasurment = "mg/dL",
+                    NormalRange = "70-99",
+                    Abbreviation = "FBS"
                 },
                 new LabTest
                 {
@@ -24,7 +27,10 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                     Description = "Total Cholesterol, HDL, LDL, Triglycerides",
                     Price = 25,
                     IsActive = true,
-                    LabTestGroupId = 1 // Chemistry
+                    LabTestGroupId = 1, // Chemistry
+                    UnitOfMeasurment = "mg/dL",
+                    NormalRange = "Varies",
+                    Abbreviation = "LP"
                 },
                 new LabTest
                 {
@@ -33,7 +39,10 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                     Description = "Complete Blood Count",
                     Price = 20,
                     IsActive = true,
-                    LabTestGroupId = 2 // Hematology
+                    LabTestGroupId = 2, // Hematology
+                    UnitOfMeasurment = null,
+                    NormalRange = "Varies",
+                    Abbreviation = "CBC"
                 },
                 new LabTest
                 {
@@ -42,7 +51,10 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                     Description = "Microbiology culture",
                     Price = 30,
                     IsActive = true,
-                    LabTestGroupId = 3 // Microbiology
+                    LabTestGroupId = 3, // Microbiology
+                    UnitOfMeasurment = null,
+                    NormalRange = "Negative",
+                    Abbreviation = "UC"
                 }
             );
         }

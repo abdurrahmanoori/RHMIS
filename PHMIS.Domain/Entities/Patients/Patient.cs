@@ -1,4 +1,4 @@
-﻿namespace PHMIS.Domain.Entities
+﻿namespace PHMIS.Domain.Entities.Patients
 {
     public class Patient
     {

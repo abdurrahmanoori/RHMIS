@@ -7,22 +7,37 @@ using PHMIS.Infrastructure.Context;
 using PHMIS.Infrastructure.Interceptors;
 using Scrutor;
 
+// Plan (pseudocode):
+// - Add internal marker types in the target namespaces to avoid magic strings.
+// - Use typeof(NamespaceMarker).Namespace to get the namespace string.
+// - Use Scrutor .InNamespaces(...) instead of .InNamespacesOf.
+// - Keep the rest of the registrations unchanged.
+
+namespace PHMIS.Infrastructure.Repositories
+{
+    internal sealed class NamespaceMarker { }
+}
+
+namespace PHMIS.Infrastructure.RepositoryStores
+{
+    internal sealed class NamespaceMarker { }
+}
+
 namespace PHMIS.Infrastructure.Extensions
 {
     public static class InfrastructureServicesRegistration
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-
             services.AddApplicationDbContext();
             services.AddScoped<AuditInterceptor>();
 
-            // Automatically register repositories with Scrutor
+            // Automatically register repositories with Scrutor (no magic strings)
             services.Scan(scan => scan
                 .FromAssemblies(typeof(InfrastructureServicesRegistration).Assembly)
                     .AddClasses(c => c.InNamespaces(
-                        "PHMIS.Infrastructure.Repositories",
-                        "PHMIS.Infrastructure.RepositoryStores"))
+                        typeof(PHMIS.Infrastructure.Repositories.NamespaceMarker).Namespace!,
+                        typeof(PHMIS.Infrastructure.RepositoryStores.NamespaceMarker).Namespace!))
                         .AsImplementedInterfaces()
                         .WithScopedLifetime());
 
@@ -40,6 +55,5 @@ namespace PHMIS.Infrastructure.Extensions
 
             return services;
         }
-
     }
 }

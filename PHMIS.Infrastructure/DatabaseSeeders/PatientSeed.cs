@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Patients;
 
 namespace PHMIS.Infrastructure.DatabaseSeeders
 {
