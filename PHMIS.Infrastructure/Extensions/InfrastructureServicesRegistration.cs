@@ -3,9 +3,9 @@ using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PHMIS.Application.Mappings;
-using PHMIS.Infrastructure.Configurations;
 using PHMIS.Infrastructure.Context;
 using PHMIS.Infrastructure.Interceptors;
+using Scrutor;
 
 namespace PHMIS.Infrastructure.Extensions
 {
@@ -16,45 +16,21 @@ namespace PHMIS.Infrastructure.Extensions
 
             services.AddApplicationDbContext();
             services.AddScoped<AuditInterceptor>();
-            // services.AddDbContext<SigtasDbContext>(
-            //    options => options.UseOracle(configuration.GetConnectionString("SigtasDbContext")),
-            //    ServiceLifetime.Transient);
-            //services.AddDbContext<AppDbContext>(
-            //    options => options.UseSqlite(
 
-            //        // configuration.GetConnectionString("SigtasDbContext"),
-            //        new SqliteConnection(configuration.GetConnectionString("sqliteConnection")),
-            //        oracleOptions =>
-            //        {
-            //            // oracleOptions.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion19);
-            //        })
-            //    // .WithExpressionExpanding()
-            //    );
+            // Automatically register repositories with Scrutor
+            services.Scan(scan => scan
+                .FromAssemblies(typeof(InfrastructureServicesRegistration).Assembly)
+                    .AddClasses(c => c.InNamespaces(
+                        "PHMIS.Infrastructure.Repositories",
+                        "PHMIS.Infrastructure.RepositoryStores"))
+                        .AsImplementedInterfaces()
+                        .WithScopedLifetime());
 
-            //services.AddSingleton<SigtasDapperDbContext>();
+            // Preserve explicit registrations for generic base and UoW
+            services.AddScoped(typeof(PHMIS.Application.Repositories.Base.IGenericRepository<>), typeof(PHMIS.Infrastructure.Repositories.Base.GenericRepository<>));
+            services.AddScoped<PHMIS.Infrastructure.RepositoryStores.RepositoriesStore>();
+            services.AddScoped<PHMIS.Application.Repositories.Base.IUnitOfWork, PHMIS.Infrastructure.Repositories.Base.UnitOfWork>();
 
-
-            //// services.AddDbContext<SigtasDbContext>(
-            ////    optionx => optionx.UseOracle(configuration.GetConnectionString("SigtasDbContext"))
-            ////    , ServiceLifetime.Transient);
-
-            //// services.AddDbContext<SigtasDbContext>(
-            ////    options => options.UseOracle(
-            ////        //configuration.GetConnectionString("SigtasDbContext"),
-            ////        new OracleConnection(configuration.GetConnectionString("SigtasDbContext")),
-
-            //// oracleOptions =>
-            ////        {
-            ////            oracleOptions.UseOracleSQLCompatibility("19");
-            ////        }),
-            ////    ServiceLifetime.Transient);
-            //services.AddAutoMapper(options =>
-            //{
-            //    // options.AddCollectionMappers();
-            //    // options.UseEntityFrameworkCoreModel<SigtasDbContext>(services);
-            //}, typeof(AdministrationProfile).Assembly);
-
-            services.AddRepositories();
             services.AddAutoMapper((serviceProvider, cfg) =>
             {
                 cfg.AddCollectionMappers();
@@ -62,7 +38,6 @@ namespace PHMIS.Infrastructure.Extensions
             },
               typeof(MappingProfile).Assembly);
 
-            // services.AddScoped<SigtasDbContext>();
             return services;
         }
 
