@@ -1,5 +1,5 @@
 ﻿using PHMIS.Application.Repositories.Base;
-using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Patients;
 
 namespace PHMIS.Application.Repositories.Patients
 {

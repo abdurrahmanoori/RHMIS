@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Patients;
 
 namespace PHMIS.Infrastructure.EntityConfigurations
 {

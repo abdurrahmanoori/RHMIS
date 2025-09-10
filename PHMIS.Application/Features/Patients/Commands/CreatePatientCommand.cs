@@ -4,7 +4,7 @@ using PHMIS.Application.Common.Response;
 using PHMIS.Application.DTO.Patients;
 using PHMIS.Application.Repositories.Base;
 using PHMIS.Application.Repositories.Patients;
-using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Patients;
 using PHMIS.Identity.IServices;
 
 

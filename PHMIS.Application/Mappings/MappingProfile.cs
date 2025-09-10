@@ -4,6 +4,7 @@ using PHMIS.Application.DTO.Provinces;
 using PHMIS.Application.DTO.Laboratory;
 using PHMIS.Domain.Entities;
 using PHMIS.Domain.Entities.Laboratory;
+using PHMIS.Domain.Entities.Patients;
 
 namespace PHMIS.Application.Mappings;
 

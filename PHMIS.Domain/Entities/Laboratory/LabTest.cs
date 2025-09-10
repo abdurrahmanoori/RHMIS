@@ -9,5 +9,10 @@
         public bool IsActive { get; set; } = true;
         public int LabTestGroupId { get; set; }
         public LabTestGroup LabTestGroup { get; set; }
+
+        // New fields
+        public string? UnitOfMeasurment { get; set; }
+        public string? NormalRange { get; set; }
+        public string? Abbreviation { get; set; }
     }
 }
