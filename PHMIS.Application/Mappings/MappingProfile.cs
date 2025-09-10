@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using PHMIS.Application.DTO.Patients;
+using PHMIS.Application.DTO.Provinces;
+using PHMIS.Application.DTO.Laboratory;
 using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Laboratory;
 
 namespace PHMIS.Application.Mappings;
 
@@ -10,5 +13,11 @@ public class MappingProfile : Profile
     {
         CreateMap<Patient, PatientDto>().ReverseMap();
         CreateMap<Patient, PatientCreateDto>().ReverseMap();
+
+        CreateMap<Province, ProvinceDto>().ReverseMap();
+        CreateMap<Province, ProvinceCreateDto>().ReverseMap();
+
+        CreateMap<LabTestGroup, LabTestGroupDto>().ReverseMap();
+        CreateMap<LabTestGroup, LabTestGroupCreateDto>().ReverseMap();
     }
 }
