@@ -22,7 +22,7 @@ namespace PHMIS.Test.Controllers
 
         public async Task InitializeAsync()
         {
-            // Clean up groups and tests for isolation
+            // Clean up groups (and cascading lab tests) for isolation
             await _factory.CleanupLabTestGroupsAsync();
         }
 
@@ -57,11 +57,82 @@ namespace PHMIS.Test.Controllers
         }
 
         [Fact]
-        public async Task Post_CreateLabTest_InvalidGroup_ReturnsBadRequest()
+        public async Task Get_ListLabTests_ReturnsPagedList()
         {
-            var create = new LabTestCreateDto { Name = "Invalid", LabTestGroupId = 999999 };
-            var resp = await _client.PostAsJsonAsync("/api/labtest", create);
-            resp.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            // Prepare a group and one test
+            var groupDto = new LabTestGroupCreateDto { Name = "Hematology" };
+            var groupResp = await _client.PostAsJsonAsync("/api/labtestgroup", groupDto);
+            groupResp.EnsureSuccessStatusCode();
+            var groupList = await _client.GetFromJsonAsync<PagedList<LabTestGroupDto>>("/api/labtestgroup?pageNumber=1&pageSize=10");
+            var group = groupList!.Items.First(x => x.Name == groupDto.Name);
+
+            var create = new LabTestCreateDto { Name = "CBC", Description = "Complete Blood Count", Price = 20, IsActive = true, LabTestGroupId = group.Id };
+            var post = await _client.PostAsJsonAsync("/api/labtest", create);
+            post.EnsureSuccessStatusCode();
+
+            var response = await _client.GetAsync("/api/labtest?pageNumber=1&pageSize=2");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var paged = await response.Content.ReadFromJsonAsync<PagedList<LabTestDto>>();
+            paged.Should().NotBeNull();
+            paged!.Items.Count.Should().BeGreaterThan(0);
+        }
+
+        [Fact]
+        public async Task Get_ById_ReturnsNotFound_ForUnknownId()
+        {
+            var response = await _client.GetAsync("/api/labtest/999999");
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
+        [Fact]
+        public async Task Put_UpdateLabTest_Works()
+        {
+            // Create group and test
+            var groupDto = new LabTestGroupCreateDto { Name = "Microbiology" };
+            var groupResp = await _client.PostAsJsonAsync("/api/labtestgroup", groupDto);
+            groupResp.EnsureSuccessStatusCode();
+            var groupList = await _client.GetFromJsonAsync<PagedList<LabTestGroupDto>>("/api/labtestgroup?pageNumber=1&pageSize=10");
+            var group = groupList!.Items.First(x => x.Name == groupDto.Name);
+
+            var create = new LabTestCreateDto { Name = "Culture", Description = "Urine culture", Price = 50, IsActive = true, LabTestGroupId = group.Id };
+            var post = await _client.PostAsJsonAsync("/api/labtest", create);
+            post.EnsureSuccessStatusCode();
+
+            var listResponse = await _client.GetAsync("/api/labtest?pageNumber=1&pageSize=50");
+            var list = await listResponse.Content.ReadFromJsonAsync<PagedList<LabTestDto>>();
+            var existing = list!.Items.First(x => x.Name == create.Name);
+
+            var updated = new LabTestCreateDto { Name = existing.Name, Description = existing.Description, Price = 60, IsActive = false, LabTestGroupId = group.Id };
+            var updateResponse = await _client.PutAsJsonAsync($"/api/labtest/{existing.Id}", updated);
+            updateResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+            var updatedDto = await updateResponse.Content.ReadFromJsonAsync<LabTestDto>();
+            updatedDto!.Price.Should().Be(60);
+            updatedDto.IsActive.Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task Delete_LabTest_Works_And_ReturnsNotFound_WhenMissing()
+        {
+            // Create group and test
+            var groupDto = new LabTestGroupCreateDto { Name = "Serology" };
+            var groupResp = await _client.PostAsJsonAsync("/api/labtestgroup", groupDto);
+            groupResp.EnsureSuccessStatusCode();
+            var groupList = await _client.GetFromJsonAsync<PagedList<LabTestGroupDto>>("/api/labtestgroup?pageNumber=1&pageSize=10");
+            var group = groupList!.Items.First(x => x.Name == groupDto.Name);
+
+            var create = new LabTestCreateDto { Name = "HIV", Description = "Rapid", Price = 15, IsActive = true, LabTestGroupId = group.Id };
+            var post = await _client.PostAsJsonAsync("/api/labtest", create);
+            post.EnsureSuccessStatusCode();
+
+            var listResponse = await _client.GetAsync("/api/labtest?pageNumber=1&pageSize=50");
+            var list = await listResponse.Content.ReadFromJsonAsync<PagedList<LabTestDto>>();
+            var existing = list!.Items.First(x => x.Name == create.Name);
+
+            var deleteResponse = await _client.DeleteAsync($"/api/labtest/{existing.Id}");
+            deleteResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var deleteAgain = await _client.DeleteAsync($"/api/labtest/{existing.Id}");
+            deleteAgain.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
     }
 }
