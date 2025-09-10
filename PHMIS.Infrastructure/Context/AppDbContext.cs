@@ -18,6 +18,7 @@ namespace PHMIS.Infrastructure.Context
             #region Seed Database
             PatientSeed.DataSeed(modelBuilder);
             LabTestGroupSeed.DataSeed(modelBuilder);
+            LabTestSeed.DataSeed(modelBuilder);
             #endregion
 
             modelBuilder.Entity<LabTest>()
