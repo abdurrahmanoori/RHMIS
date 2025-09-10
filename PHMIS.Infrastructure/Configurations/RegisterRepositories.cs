@@ -18,6 +18,7 @@ namespace PHMIS.Infrastructure.Configurations
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<IProvinceRepository, ProvinceRepository>();
             services.AddScoped<ILabTestGroupRepository, LabTestGroupRepository>();
+            services.AddScoped<ILabTestRepository, LabTestRepository>();
 
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

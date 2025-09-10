@@ -19,10 +19,17 @@ namespace PHMIS.Infrastructure.Context
             PatientSeed.DataSeed(modelBuilder);
             LabTestGroupSeed.DataSeed(modelBuilder);
             #endregion
+
+            modelBuilder.Entity<LabTest>()
+                .HasOne(x => x.LabTestGroup)
+                .WithMany()
+                .HasForeignKey(x => x.LabTestGroupId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<LabTestGroup> LabTestGroups { get; set; }
+        public DbSet<LabTest> LabTests { get; set; }
     }
 }
