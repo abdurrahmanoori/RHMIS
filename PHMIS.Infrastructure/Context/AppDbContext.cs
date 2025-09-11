@@ -1,14 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PHMIS.Domain.Entities;
 using PHMIS.Domain.Entities.Laboratory;
 using PHMIS.Domain.Entities.Patients;
 using PHMIS.Domain.Enums;
+using PHMIS.Identity.Entity;
 using PHMIS.Infrastructure.DatabaseSeeders;
 
 namespace PHMIS.Infrastructure.Context
 {
-    public class AppDbContext : DbContext
+    public partial class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -30,11 +32,16 @@ namespace PHMIS.Infrastructure.Context
                 .HasForeignKey(x => x.LabTestGroupId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Store LabStatus as string in PatientLabTest
+            // Store LabStatus enum as string in PatientLabTest.Status
             modelBuilder.Entity<PatientLabTest>()
-                .Property(x => x.LabStatus)
+                .Property(x => x.Status)
                 .HasConversion(new EnumToStringConverter<LabStatus>());
+
+            // Allow extension from other layers via partial method
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Province> Provinces { get; set; }
