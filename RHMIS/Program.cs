@@ -3,6 +3,7 @@ using PHMIS.Extensions;
 using PHMIS.Infrastructure.Extensions;
 using PHMIS.Application.Extensions;
 using PHMIS.Identity.Extensions;
+using PHMIS.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,14 +33,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.ConfigureApplicationServices();
-builder.Services.ConfigureIdentityServices();
-//builder.Services.ConfigurePresentionService();
+builder.Services.ConfigureIdentityServices<AppDbContext>(builder.Configuration);
 
 // MiniProfiler registration
 builder.Services.AddMiniProfilerServices();
-
-
-
 
 
 
@@ -55,6 +52,7 @@ app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
