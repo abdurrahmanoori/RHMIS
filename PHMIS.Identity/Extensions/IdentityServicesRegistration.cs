@@ -33,7 +33,9 @@ namespace PHMIS.Identity.Extensions
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
+            services.AddHttpContextAccessor();
             services.AddScoped<ICurrentUser, CurrentUser>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }
