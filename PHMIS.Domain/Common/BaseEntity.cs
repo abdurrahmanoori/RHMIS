@@ -8,6 +8,8 @@ namespace PHMIS.Domain.Common
         public int Id { get; set; }
 
         public string Name { get; set; }
+        [Required]
+        public string PublicId { get; set; } = System.Guid.NewGuid().ToString();
 
     }
 }
