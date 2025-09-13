@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PHMIS.Domain.Entities;
+using PHMIS.Domain.Entities.Identity.Entity;
 using PHMIS.Domain.Entities.Laboratory;
 using PHMIS.Domain.Entities.Patients;
 using PHMIS.Domain.Enums;
-using PHMIS.Identity.Entity;
 using PHMIS.Infrastructure.DatabaseSeeders;
 
 namespace PHMIS.Infrastructure.Context

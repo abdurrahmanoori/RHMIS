@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PHMIS.Identity.Entity;
-using PHMIS.Identity.IServices;
+using PHMIS.Application.Identity.IServices;
+using PHMIS.Domain.Entities.Identity.Entity;
 using PHMIS.Identity.Services;
 
 namespace PHMIS.Identity.Extensions

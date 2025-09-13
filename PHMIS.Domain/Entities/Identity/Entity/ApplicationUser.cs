@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Identity;
 
-namespace PHMIS.Identity.Entity
+namespace PHMIS.Domain.Entities.Identity.Entity
 {
     public class ApplicationUser : IdentityUser<int>
     {

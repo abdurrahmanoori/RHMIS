@@ -1,5 +1,5 @@
 ﻿
-namespace PHMIS.Identity.IServices
+namespace PHMIS.Application.Identity.IServices
 {
     public interface ICurrentUser
     {

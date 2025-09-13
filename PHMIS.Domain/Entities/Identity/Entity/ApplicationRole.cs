@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace PHMIS.Identity.Entity
+namespace PHMIS.Domain.Entities.Identity.Entity
 {
     public class ApplicationRole : IdentityRole<int>
     {
