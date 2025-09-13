@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PHMIS.Domain.Entities.Identity.Entity;
+using PHMIS.Infrastructure.Context;
 
 namespace PHMIS.Identity.Seed
 {
@@ -9,6 +11,18 @@ namespace PHMIS.Identity.Seed
         public static async Task SeedAsync(IServiceProvider services)
         {
             using var scope = services.CreateScope();
+            var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+            var pending = await ctx.Database.GetPendingMigrationsAsync();
+            if (pending.Any())
+            {
+                await ctx.Database.MigrateAsync();
+            }
+            else
+            {
+                await ctx.Database.EnsureCreatedAsync();
+            }
+
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
@@ -34,9 +48,10 @@ namespace PHMIS.Identity.Seed
                     Email = adminEmail,
                     EmailConfirmed = true,
                     FirstName = "System",
-                    LastName = "Admin"
+                    LastName = "Admin",
+                    HospitalId = 1
                 };
-                // Simple but valid password given current Identity options (min length 6, no complexity requirements)
+                // Simple but valid password
                 var adminPassword = "Pass@123";
                 var createAdmin = await userManager.CreateAsync(admin, adminPassword);
                 if (createAdmin.Succeeded)
@@ -57,7 +72,8 @@ namespace PHMIS.Identity.Seed
                     Email = userEmail,
                     EmailConfirmed = true,
                     FirstName = "Default",
-                    LastName = "User"
+                    LastName = "User",
+                    HospitalId = 1
                 };
                 var userPassword = "Pass@123";
                 var createUser = await userManager.CreateAsync(user, userPassword);
