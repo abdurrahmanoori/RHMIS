@@ -11,8 +11,8 @@ using PHMIS.Infrastructure.Context;
 namespace PHMIS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250913091719_ADDhOSPITAL")]
-    partial class ADDhOSPITAL
+    [Migration("20250913133533_IntaiMig")]
+    partial class IntaiMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -232,6 +232,47 @@ namespace PHMIS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "100 Main St",
+                            City = "Springfield",
+                            Code = "H-CENTRAL",
+                            Country = "US",
+                            Email = "central@example.com",
+                            IsActive = true,
+                            Name = "Central Hospital",
+                            Phone = "+1-555-0001",
+                            PublicId = "a4ec3c8d-2b05-4a3d-9b08-8c6f0d1b4a11"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "200 West Ave",
+                            City = "Springfield",
+                            Code = "H-WEST",
+                            Country = "US",
+                            Email = "west@example.com",
+                            IsActive = true,
+                            Name = "Westside Clinic",
+                            Phone = "+1-555-0002",
+                            PublicId = "b8b2a2b3-6f02-4c8e-9b47-84a118e8f2c2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "300 East Blvd",
+                            City = "Springfield",
+                            Code = "H-EAST",
+                            Country = "US",
+                            Email = "east@example.com",
+                            IsActive = true,
+                            Name = "East Medical Center",
+                            Phone = "+1-555-0003",
+                            PublicId = "c3f4d6e7-8a90-4b2c-b3d4-e5f6a7b8c9d0"
+                        });
                 });
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Identity.Entity.ApplicationRole", b =>
@@ -284,7 +325,7 @@ namespace PHMIS.Infrastructure.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("HospitalId")
+                    b.Property<int>("HospitalId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
@@ -335,6 +376,46 @@ namespace PHMIS.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "689e23d7-80aa-4873-8cf7-c1798d828394",
+                            Email = "admin@local",
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            HospitalId = 1,
+                            LastName = "Admin",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@LOCAL",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAENkwj9M48uZBk1E57AFNjA0u9ssvvMbDjhbuYnUpD1v6AnUcfU/aeXEO4+LCsv/c9w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "admin-seed",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "29f5727f-70a3-4fdf-be68-11adb37798c0",
+                            Email = "user@local",
+                            EmailConfirmed = true,
+                            FirstName = "Default",
+                            HospitalId = 1,
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@LOCAL",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAIAAYagAAAAELzLT0lI0Jj93NqA41PCZkJxD/SMJn4lo7zZXzDXKCKKb0CCWqTdDegcTz5dncKriQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "user-seed",
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        });
                 });
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Laboratory.LabTest", b =>
@@ -394,7 +475,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Glucose",
                             NormalRange = "70-99",
                             Price = 10,
-                            PublicId = "66c2d88c-f7fe-4434-ae45-d53b6f128d4a",
+                            PublicId = "6f3e1457-8fea-4382-a748-2302a8546c79",
                             UnitOfMeasurment = "mg/dL"
                         },
                         new
@@ -407,7 +488,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Lipid Profile",
                             NormalRange = "Varies",
                             Price = 25,
-                            PublicId = "80947ecb-87ee-4bbf-bfe7-784af44b558f",
+                            PublicId = "2c0d827f-d5af-4fdf-b063-b596c2c75dd5",
                             UnitOfMeasurment = "mg/dL"
                         },
                         new
@@ -420,7 +501,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "CBC",
                             NormalRange = "Varies",
                             Price = 20,
-                            PublicId = "04fa2544-c6b0-4951-8d65-b50a79c65ac2"
+                            PublicId = "421137d3-c694-41b3-93af-946d5a35faf3"
                         },
                         new
                         {
@@ -432,7 +513,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Urine Culture",
                             NormalRange = "Negative",
                             Price = 30,
-                            PublicId = "0c8538fb-2423-4f1b-941b-70143508c6c0"
+                            PublicId = "9d3ab0a1-0a99-4b7b-874d-2f67e0f276e4"
                         });
                 });
 
@@ -466,7 +547,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 1,
                             Description = "Chemistry tests",
                             Name = "Chemistry",
-                            PublicId = "2584fb4b-0d75-4c48-a5d8-5073e690576c",
+                            PublicId = "9fa8e362-15c6-47a2-9cb3-6297d87829d4",
                             SortOrder = (short)1
                         },
                         new
@@ -474,7 +555,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 2,
                             Description = "Blood tests",
                             Name = "Hematology",
-                            PublicId = "6b78445d-c6d5-4848-a638-fcd146c59d87",
+                            PublicId = "4ab294c4-1d43-4ecc-84ca-83fb468cf173",
                             SortOrder = (short)2
                         },
                         new
@@ -482,7 +563,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 3,
                             Description = "Microbiology tests",
                             Name = "Microbiology",
-                            PublicId = "249d0548-ce61-4b61-9e77-e3a31fb9534d",
+                            PublicId = "b7800a32-f461-4043-bde6-4a89cb6d81bd",
                             SortOrder = (short)3
                         });
                 });
@@ -544,7 +625,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Doe",
                             Name = "John",
                             PhoneNumber = "555-1234",
-                            PublicId = "f7393c6e-1c6b-4be0-91cd-ff6ea6e5de43"
+                            PublicId = "42bd65f9-3503-4cd6-82a2-3e326b643582"
                         },
                         new
                         {
@@ -556,7 +637,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Smith",
                             Name = "Jane",
                             PhoneNumber = "555-5678",
-                            PublicId = "d1cd5f66-8c1c-4b2c-8e00-6ed643f04450"
+                            PublicId = "8405555c-6eda-4eec-8af5-0aed96c79c29"
                         },
                         new
                         {
@@ -568,7 +649,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Johnson",
                             Name = "Alex",
                             PhoneNumber = "555-9012",
-                            PublicId = "b7dd26da-9ba5-496a-abd7-a7b21e222798"
+                            PublicId = "cc290e42-e9ce-483b-9676-541422ccbc6b"
                         });
                 });
 
@@ -721,9 +802,13 @@ namespace PHMIS.Infrastructure.Migrations
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Identity.Entity.ApplicationUser", b =>
                 {
-                    b.HasOne("PHMIS.Domain.Entities.Hospital", null)
+                    b.HasOne("PHMIS.Domain.Entities.Hospital", "Hospital")
                         .WithMany("Doctors")
-                        .HasForeignKey("HospitalId");
+                        .HasForeignKey("HospitalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hospital");
                 });
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Laboratory.LabTest", b =>
