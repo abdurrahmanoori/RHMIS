@@ -30,6 +30,8 @@ namespace PHMIS.Controllers
             HandleResultResponse(await Mediator.Send(new UpdatePatientCommand(id, dto)));
 
         [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+
         public async Task<ActionResult<Unit>> Delete(int id) =>
             HandleResultResponse(await Mediator.Send(new DeletePatientCommand(id)));
     }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PHMIS.Infrastructure.Context;
 
@@ -10,9 +11,11 @@ using PHMIS.Infrastructure.Context;
 namespace PHMIS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250913091719_ADDhOSPITAL")]
+    partial class ADDhOSPITAL
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -229,47 +232,6 @@ namespace PHMIS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "100 Main St",
-                            City = "Springfield",
-                            Code = "H-CENTRAL",
-                            Country = "US",
-                            Email = "central@example.com",
-                            IsActive = true,
-                            Name = "Central Hospital",
-                            Phone = "+1-555-0001",
-                            PublicId = "a4ec3c8d-2b05-4a3d-9b08-8c6f0d1b4a11"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "200 West Ave",
-                            City = "Springfield",
-                            Code = "H-WEST",
-                            Country = "US",
-                            Email = "west@example.com",
-                            IsActive = true,
-                            Name = "Westside Clinic",
-                            Phone = "+1-555-0002",
-                            PublicId = "b8b2a2b3-6f02-4c8e-9b47-84a118e8f2c2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "300 East Blvd",
-                            City = "Springfield",
-                            Code = "H-EAST",
-                            Country = "US",
-                            Email = "east@example.com",
-                            IsActive = true,
-                            Name = "East Medical Center",
-                            Phone = "+1-555-0003",
-                            PublicId = "c3f4d6e7-8a90-4b2c-b3d4-e5f6a7b8c9d0"
-                        });
                 });
 
             modelBuilder.Entity("PHMIS.Domain.Entities.Identity.Entity.ApplicationRole", b =>
@@ -432,7 +394,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Glucose",
                             NormalRange = "70-99",
                             Price = 10,
-                            PublicId = "ac67918f-c1ff-4871-9745-dbf7ae00ee3c",
+                            PublicId = "66c2d88c-f7fe-4434-ae45-d53b6f128d4a",
                             UnitOfMeasurment = "mg/dL"
                         },
                         new
@@ -445,7 +407,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Lipid Profile",
                             NormalRange = "Varies",
                             Price = 25,
-                            PublicId = "593aeb15-aae1-41dc-a770-452a348c0549",
+                            PublicId = "80947ecb-87ee-4bbf-bfe7-784af44b558f",
                             UnitOfMeasurment = "mg/dL"
                         },
                         new
@@ -458,7 +420,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "CBC",
                             NormalRange = "Varies",
                             Price = 20,
-                            PublicId = "f4a5fa31-3286-47b8-ae78-e7b0bfcce3c3"
+                            PublicId = "04fa2544-c6b0-4951-8d65-b50a79c65ac2"
                         },
                         new
                         {
@@ -470,7 +432,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Name = "Urine Culture",
                             NormalRange = "Negative",
                             Price = 30,
-                            PublicId = "817c2166-63ae-4bb5-8ae8-ccb22999f1ba"
+                            PublicId = "0c8538fb-2423-4f1b-941b-70143508c6c0"
                         });
                 });
 
@@ -504,7 +466,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 1,
                             Description = "Chemistry tests",
                             Name = "Chemistry",
-                            PublicId = "ac67ba48-1deb-4dcb-88f3-bbf652c9656f",
+                            PublicId = "2584fb4b-0d75-4c48-a5d8-5073e690576c",
                             SortOrder = (short)1
                         },
                         new
@@ -512,7 +474,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 2,
                             Description = "Blood tests",
                             Name = "Hematology",
-                            PublicId = "bf52b17e-db9e-4851-b7a0-6e6059bdde50",
+                            PublicId = "6b78445d-c6d5-4848-a638-fcd146c59d87",
                             SortOrder = (short)2
                         },
                         new
@@ -520,7 +482,7 @@ namespace PHMIS.Infrastructure.Migrations
                             Id = 3,
                             Description = "Microbiology tests",
                             Name = "Microbiology",
-                            PublicId = "42d1b06e-db7f-49d3-8c03-1e50cc4d6b87",
+                            PublicId = "249d0548-ce61-4b61-9e77-e3a31fb9534d",
                             SortOrder = (short)3
                         });
                 });
@@ -582,7 +544,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Doe",
                             Name = "John",
                             PhoneNumber = "555-1234",
-                            PublicId = "134b3466-7189-4c0c-a1a9-5aff378c7cba"
+                            PublicId = "f7393c6e-1c6b-4be0-91cd-ff6ea6e5de43"
                         },
                         new
                         {
@@ -594,7 +556,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Smith",
                             Name = "Jane",
                             PhoneNumber = "555-5678",
-                            PublicId = "73aad0d9-f487-4e5e-8480-55e4776e13b4"
+                            PublicId = "d1cd5f66-8c1c-4b2c-8e00-6ed643f04450"
                         },
                         new
                         {
@@ -606,7 +568,7 @@ namespace PHMIS.Infrastructure.Migrations
                             LastName = "Johnson",
                             Name = "Alex",
                             PhoneNumber = "555-9012",
-                            PublicId = "f75b0747-4068-4678-a62f-474255da4d53"
+                            PublicId = "b7dd26da-9ba5-496a-abd7-a7b21e222798"
                         });
                 });
 
