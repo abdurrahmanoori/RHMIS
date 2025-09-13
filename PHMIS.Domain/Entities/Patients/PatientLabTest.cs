@@ -9,6 +9,8 @@ public class PatientLabTest
 {
 
     public int Id { get; set; }
+    [Required]
+    public string PublicId { get; set; } = System.Guid.NewGuid().ToString();
 
 
     public int PatientId { get; set; }

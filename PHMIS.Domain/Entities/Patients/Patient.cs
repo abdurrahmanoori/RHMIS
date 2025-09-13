@@ -1,9 +1,10 @@
-﻿namespace PHMIS.Domain.Entities.Patients
+﻿using PHMIS.Domain.Common;
+
+namespace PHMIS.Domain.Entities.Patients
 {
-    public class Patient
+    public class Patient : BaseEntity
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; } = string.Empty;
