@@ -23,5 +23,13 @@ namespace PHMIS.Test.Extensions
             dbContext.LabTestGroups.RemoveRange(dbContext.LabTestGroups);
             await dbContext.SaveChangesAsync();
         }
+
+        public static async Task CleanupHospitalsAsync(this CustomWebApplicationFactory factory)
+        {
+            using var scope = factory.Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.Hospitals.RemoveRange(dbContext.Hospitals);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

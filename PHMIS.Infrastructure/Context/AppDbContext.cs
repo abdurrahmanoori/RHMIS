@@ -24,6 +24,7 @@ namespace PHMIS.Infrastructure.Context
             PatientSeed.DataSeed(modelBuilder);
             LabTestGroupSeed.DataSeed(modelBuilder);
             LabTestSeed.DataSeed(modelBuilder);
+            HospitalSeed.DataSeed(modelBuilder);
             #endregion
 
             modelBuilder.Entity<LabTest>()
@@ -48,5 +49,6 @@ namespace PHMIS.Infrastructure.Context
         public DbSet<LabTestGroup> LabTestGroups { get; set; }
         public DbSet<LabTest> LabTests { get; set; }
         public DbSet<PatientLabTest> PatientLabTests { get; set; }
+        public DbSet<Hospital> Hospitals { get; set; }
     }
 }

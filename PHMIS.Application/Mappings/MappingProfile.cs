@@ -2,6 +2,7 @@
 using PHMIS.Application.DTO.Patients;
 using PHMIS.Application.DTO.Provinces;
 using PHMIS.Application.DTO.Laboratory;
+using PHMIS.Application.DTO.Hospitals;
 using PHMIS.Domain.Entities;
 using PHMIS.Domain.Entities.Laboratory;
 using PHMIS.Domain.Entities.Patients;
@@ -23,5 +24,11 @@ public class MappingProfile : Profile
 
         CreateMap<LabTest, LabTestDto>().ReverseMap();
         CreateMap<LabTest, LabTestCreateDto>().ReverseMap();
+
+        CreateMap<Hospital, HospitalDto>().ReverseMap();
+        CreateMap<Hospital, HospitalCreateDto>()
+            .ReverseMap()
+            .ForMember(dest => dest.Name,
+                opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.Code) ? (src.Email ?? "Hospital") : src.Code));
     }
 }
