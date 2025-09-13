@@ -18,6 +18,8 @@ If you encounter any problem, avoid introducing solutions that could cause break
 
 I am new to React.js and using TypeScript. If I ask you to develop a feature or make changes (in the frontend or anywhere else), please:
 
-- Keep the code as simple as possible, not overly complex.
+- Keep the code simple, but still follow good coding practices and modern approaches.
+- please use **Arrow Function Expression** for function.
 - Avoid introducing breaking changes to the project.
 - Remember that I don’t know much about React yet, so clarity and simplicity are important.
+- Ensure that any new component or UI element is fully **responsive**.
