@@ -30,7 +30,8 @@ namespace PHMIS.Test.Controllers
                 Password = "Pass@123",
                 FirstName = "Test",
                 LastName = "User",
-                Roles = new[] { "User" }
+                Roles = new[] { "User" },
+                HospitalId = 1
             };
 
             var response = await _client.PostAsJsonAsync("/api/users", dto);
