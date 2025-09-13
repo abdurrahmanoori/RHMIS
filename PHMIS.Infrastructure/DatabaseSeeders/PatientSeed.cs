@@ -11,7 +11,7 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                 new Patient
                 {
                     Id = 1,
-                    FirstName = "John",
+                    Name = "John",
                     LastName = "Doe",
                     DateOfBirth = new DateTime(1985, 5, 15),
                     Gender = "Male",
@@ -22,7 +22,7 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                 new Patient
                 {
                     Id = 2,
-                    FirstName = "Jane",
+                    Name = "Jane",
                     LastName = "Smith",
                     DateOfBirth = new DateTime(1990, 8, 22),
                     Gender = "Female",
@@ -33,7 +33,7 @@ namespace PHMIS.Infrastructure.DatabaseSeeders
                 new Patient
                 {
                     Id = 3,
-                    FirstName = "Alex",
+                    Name = "Alex",
                     LastName = "Johnson",
                     DateOfBirth = new DateTime(1978, 12, 3),
                     Gender = "Other",
