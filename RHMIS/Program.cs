@@ -4,6 +4,7 @@ using PHMIS.Infrastructure.Extensions;
 using PHMIS.Application.Extensions;
 using PHMIS.Infrastructure.Context;
 using PHMIS.Identity.Extensions;
+using PHMIS.Identity.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,9 @@ builder.Services.AddMiniProfilerServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 var app = builder.Build();
+
+// Seed identity data (roles/users) without top-level await
+IdentityDataSeeder.SeedAsync(app.Services).GetAwaiter().GetResult();
 
 app.UseSwaggerWithUI(app.Environment);
 
