@@ -20,6 +20,14 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className={`app-shell ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
       <Sidebar collapsed={!sidebarOpen} onNavigate={() => window.innerWidth < 1024 && setSidebarOpen(false)} />
+      {/* Mobile backdrop to close sidebar */}
+      {sidebarOpen && (
+        <div
+          className="backdrop"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden
+        />
+      )}
       <div className="app-main">
         <Topbar onToggleSidebar={() => setSidebarOpen((s) => !s)} onToggleTheme={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))} theme={theme} />
         <main className="content">
