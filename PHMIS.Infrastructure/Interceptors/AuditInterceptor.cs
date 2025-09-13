@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using PHMIS.Application.Common;
-using PHMIS.Identity.IServices;
+using PHMIS.Application.Identity.IServices;
 
 namespace PHMIS.Infrastructure.Interceptors
 {

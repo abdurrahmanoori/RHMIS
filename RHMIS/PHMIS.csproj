@@ -29,6 +29,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\PHMIS.Application\PHMIS.Application.csproj" />
+	  <ProjectReference Include="..\PHMIS.Identity\PHMIS.Identity.csproj" />
 	  <ProjectReference Include="..\PHMIS.Infrastructure\PHMIS.Infrastructure.csproj" />
 	</ItemGroup>
 

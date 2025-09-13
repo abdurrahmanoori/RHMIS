@@ -2,8 +2,8 @@ using FluentValidation.AspNetCore;
 using PHMIS.Extensions;
 using PHMIS.Infrastructure.Extensions;
 using PHMIS.Application.Extensions;
-using PHMIS.Identity.Extensions;
 using PHMIS.Infrastructure.Context;
+using PHMIS.Identity.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

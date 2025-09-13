@@ -2,10 +2,10 @@ using AutoMapper;
 using MediatR;
 using PHMIS.Application.Common.Response;
 using PHMIS.Application.DTO.Patients;
+using PHMIS.Application.Identity.IServices;
 using PHMIS.Application.Repositories.Base;
 using PHMIS.Application.Repositories.Patients;
 using PHMIS.Domain.Entities.Patients;
-using PHMIS.Identity.IServices;
 
 
 namespace PHMIS.Application.Features.Patients.Commands
